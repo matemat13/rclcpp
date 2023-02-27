@@ -231,8 +231,9 @@ TEST_F(TestTime, operators) {
   young_changed -= rclcpp::Duration::from_nanoseconds(old.nanoseconds());
   EXPECT_EQ(sub.nanoseconds(), young_changed.nanoseconds());
 
-  rclcpp::Time system_time(0, 0, RCL_SYSTEM_TIME);
-  rclcpp::Time steady_time(0, 0, RCL_STEADY_TIME);
+  rclcpp::Time system_time(1, 0, RCL_SYSTEM_TIME);
+  rclcpp::Time steady_time(1, 0, RCL_STEADY_TIME);
+  rclcpp::Time zero_time(0, 0, RCL_STEADY_TIME);
 
   EXPECT_ANY_THROW((void)(system_time == steady_time));
   EXPECT_ANY_THROW((void)(system_time != steady_time));
@@ -241,6 +242,14 @@ TEST_F(TestTime, operators) {
   EXPECT_ANY_THROW((void)(system_time < steady_time));
   EXPECT_ANY_THROW((void)(system_time > steady_time));
   EXPECT_ANY_THROW((void)(system_time - steady_time));
+
+  EXPECT_NO_THROW((void)(system_time == zero_time));
+  EXPECT_NO_THROW((void)(system_time != zero_time));
+  EXPECT_NO_THROW((void)(system_time <= zero_time));
+  EXPECT_NO_THROW((void)(system_time >= zero_time));
+  EXPECT_NO_THROW((void)(system_time < zero_time));
+  EXPECT_NO_THROW((void)(system_time > zero_time));
+  EXPECT_NO_THROW((void)(system_time - zero_time));
 
   rclcpp::Clock system_clock(RCL_SYSTEM_TIME);
   rclcpp::Clock steady_clock(RCL_STEADY_TIME);

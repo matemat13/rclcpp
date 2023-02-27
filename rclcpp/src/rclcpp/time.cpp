@@ -116,7 +116,7 @@ Time::operator=(const builtin_interfaces::msg::Time & time_msg)
 bool
 Time::operator==(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error("can't compare times with different time sources");
   }
 
@@ -132,7 +132,7 @@ Time::operator!=(const rclcpp::Time & rhs) const
 bool
 Time::operator<(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error("can't compare times with different time sources");
   }
 
@@ -142,7 +142,7 @@ Time::operator<(const rclcpp::Time & rhs) const
 bool
 Time::operator<=(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error("can't compare times with different time sources");
   }
 
@@ -152,7 +152,7 @@ Time::operator<=(const rclcpp::Time & rhs) const
 bool
 Time::operator>=(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error("can't compare times with different time sources");
   }
 
@@ -162,7 +162,7 @@ Time::operator>=(const rclcpp::Time & rhs) const
 bool
 Time::operator>(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error("can't compare times with different time sources");
   }
 
@@ -184,7 +184,7 @@ Time::operator+(const rclcpp::Duration & rhs) const
 Duration
 Time::operator-(const rclcpp::Time & rhs) const
 {
-  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type) {
+  if (rcl_time_.clock_type != rhs.rcl_time_.clock_type && rcl_time_.nanoseconds != 0 && rhs.rcl_time_.nanoseconds != 0) {
     throw std::runtime_error(
             std::string("can't subtract times with different time sources [") +
             std::to_string(rcl_time_.clock_type) + " != " +

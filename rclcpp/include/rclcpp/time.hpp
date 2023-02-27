@@ -101,7 +101,7 @@ public:
   operator=(const builtin_interfaces::msg::Time & time_msg);
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    */
   RCLCPP_PUBLIC
   bool
@@ -112,28 +112,28 @@ public:
   operator!=(const rclcpp::Time & rhs) const;
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    */
   RCLCPP_PUBLIC
   bool
   operator<(const rclcpp::Time & rhs) const;
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    */
   RCLCPP_PUBLIC
   bool
   operator<=(const rclcpp::Time & rhs) const;
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    */
   RCLCPP_PUBLIC
   bool
   operator>=(const rclcpp::Time & rhs) const;
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    */
   RCLCPP_PUBLIC
   bool
@@ -147,7 +147,7 @@ public:
   operator+(const rclcpp::Duration & rhs) const;
 
   /**
-   * \throws std::runtime_error if the time sources are different
+   * \throws std::runtime_error if the time sources are different and neither is zero
    * \throws std::overflow_error if addition leads to overflow
    */
   RCLCPP_PUBLIC
